@@ -40,8 +40,8 @@ I’m a B.Tech student in **Computer Science with a specialization in AI & ML** 
 
 - 🔍 [Crop Prediction Model](https://github.com/omroy07/Plant-Prediction-Model): AI/ML-based system that recommends optimal crops based on soil and weather data.
 - 📊 [Stock Market Visualizer](https://github.com/omroy07/Stock_Market): A web-based tool to track and visualize stock market data.
-- 🌱 [Hydroponics IoT System](#): An automated soil-less farming system using real-time sensors (coming soon).
-- 🌐 [Welcome Web Contribution](https://github.com/omroy07/Welcome_1st_contribution): First steps in web development using HTML and CSS.
+- 🌱 [Hydroponics IoT System](#): An automated soil-less farming system using real-time sensors .
+
 
 ---
 
