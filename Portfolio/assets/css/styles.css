@@ -3,7 +3,6 @@
 
 /*=============== VARIABLES ===============*/
 :root {
-  /* Color tokens — "terminal & signal" (dark) */
   --bg: #090C14;
   --bg-alt: #0D1119;
   --panel: #10141F;
@@ -177,6 +176,7 @@ textarea {
 
 .button:hover {
   background: var(--accent-deep);
+  color: var(--bg);
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
@@ -230,10 +230,6 @@ textarea {
   font-size: 1.15rem;
   color: var(--accent);
   letter-spacing: -0.01em;
-}
-
-.nav__logo-bracket {
-  color: var(--ink-faint);
 }
 
 .nav__logo-dot {
@@ -297,6 +293,7 @@ textarea {
   display: none;
   font-size: 1.6rem;
   color: var(--ink);
+  cursor: pointer;
 }
 
 /*=============== HOME ===============*/
@@ -362,6 +359,9 @@ textarea {
   width: 18px;
   height: 18px;
   border-radius: 2px;
+  object-fit: contain;
+  filter: brightness(0.6) saturate(0);
+  transition: filter var(--transition);
 }
 
 .home__social-icon:hover {
@@ -370,6 +370,11 @@ textarea {
   color: var(--accent-deep);
 }
 
+.home__social-icon:hover img {
+  filter: brightness(1) saturate(1);
+}
+
+/* ── Hero photo area ── */
 .home__img {
   position: relative;
   width: 100%;
@@ -419,6 +424,7 @@ textarea {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center top;
 }
 
 .home__badge {
@@ -436,6 +442,9 @@ textarea {
   color: var(--accent-deep);
   box-shadow: var(--shadow-sm);
   white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 7px;
 }
 
 .home__badge::before {
@@ -445,7 +454,20 @@ textarea {
   height: 6px;
   background: var(--accent);
   border-radius: 50%;
-  margin-right: 7px;
+  flex-shrink: 0;
+  animation: badge-blink 2s ease-in-out infinite;
+}
+
+@keyframes badge-blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
 }
 
 /*=============== ABOUT ===============*/
@@ -463,6 +485,14 @@ textarea {
   box-shadow: var(--shadow-md);
   position: sticky;
   top: calc(var(--header-h) + 24px);
+}
+
+.about__img img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
 }
 
 .about__role {
@@ -502,9 +532,19 @@ textarea {
   margin-bottom: 4px;
 }
 
+.about__detail dd {
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+
 .about__detail dd a {
   color: var(--accent-deep);
   border-bottom: 1px solid var(--accent-soft);
+  transition: opacity var(--transition);
+}
+
+.about__detail dd a:hover {
+  opacity: 0.75;
 }
 
 .about__buttons {
@@ -551,6 +591,7 @@ textarea {
   background: var(--accent-soft);
   color: var(--accent-deep);
   font-weight: 500;
+  cursor: default;
   transition: transform var(--transition);
 }
 
@@ -816,18 +857,6 @@ textarea {
   transform: translateY(-3px);
 }
 
-.certificate__icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  background: var(--bg-alt);
-  font-size: 1.3rem;
-  margin-bottom: 22px;
-}
-
 .certificate__title {
   font-family: var(--font-body);
   font-size: 1.1rem;
@@ -836,11 +865,10 @@ textarea {
   margin-bottom: 8px;
 }
 
-.certificate__issuer {
-  color: var(--link);
-  font-weight: 500;
-  font-size: 0.95rem;
-  margin-bottom: 18px;
+.certificate__description {
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+  margin-bottom: 12px;
 }
 
 .certificate__date {
@@ -893,6 +921,7 @@ textarea {
   font-size: 0.95rem;
   resize: vertical;
   transition: border-color var(--transition), background var(--transition);
+  width: 100%;
 }
 
 .contact__input::placeholder {
@@ -900,6 +929,7 @@ textarea {
 }
 
 .contact__input:focus {
+  outline: none;
   border-color: var(--accent);
   background: var(--panel-raised);
 }
@@ -926,6 +956,11 @@ textarea {
   color: var(--accent-deep);
   font-weight: 600;
   word-break: break-word;
+  transition: opacity var(--transition);
+}
+
+.contact__email:hover {
+  opacity: 0.75;
 }
 
 .contact__social {
@@ -1041,6 +1076,11 @@ textarea {
   transform: translateY(0);
 }
 
+.scroll-top:hover {
+  background: var(--accent-deep);
+  color: var(--bg);
+}
+
 /*=============== RESPONSIVE ===============*/
 @media screen and (max-width: 992px) {
   .home {
@@ -1107,6 +1147,7 @@ textarea {
     transform: translateX(100%);
     transition: transform var(--transition);
     box-shadow: var(--shadow-md);
+    overflow-y: auto;
   }
 
   .nav__menu.show {
